@@ -2,14 +2,24 @@
   'use strict';
 
   angular
-  .module('pirates', [])
-  .controller("PiratesController", PiratesController);
+  .module('pirates', ['ngRoute'])
+  .controller("PiratesController", PiratesController)
+  .config(config);
 
-  function PiratesController ($scope) {
-    $scope.mv = {};
-    $scope.mv.num = 42;
-    console.log($scope.mv.num);
+  function PiratesController () {
+    var mv = this;
+    mv.num = 42;
+    console.log(mv.num);
   };
 
+  function config($routeProvider) {
+    $routeProvider
+    .when('/', {
+      templateUrl: 'views/pirates.html',
+      controllerAs: 'pirate',
+      controller: 'PiratesController'
+    });
+
+  }
 
 })();
