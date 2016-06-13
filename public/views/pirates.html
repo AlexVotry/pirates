@@ -1,1 +1,32 @@
 <h1>Pirates</h1>
+
+<div class="row well col-sm-5" ng-repeat="sailor in pirate.allPirates">
+    <img class="col-sm-3" ng-src="{{ sailor.image }}" ng-click="sailor.imageForm = !sailor.imageForm">
+    <input type="text" ng-show="sailor.imageForm" ng-model="sailor.image" >
+    <div class="col-sm-9">
+      <li ng-click="sailor.nameForm = !sailor.nameForm">{{ sailor.name }}</li>
+      <span ng-show="sailor.nameForm"><input type="text" ng-model="sailor.name" autofocus></span>
+      <li ng-click="sailor.poisonForm = !sailor.poisonForm">{{ sailor.poison }}</li>
+      <span ng-show="sailor.poisonForm"><input type="text" ng-model="sailor.poison" ></span>
+      <li ng-click="sailor.accessoryForm = !sailor.accessoryForm">{{ sailor.accessory }}</li>
+      <span ng-show="sailor.accessoryForm"><input type="text" ng-model="sailor.accessory" ></span>
+    </ul>
+  </div>
+
+  <div class="row">
+    <button class="btn btn-success col-sm-4" type="button" name="edit" ng-click="pirate.editPirate(sailor)"> Edit this pirate! </button>
+    <span>
+      <button type="button" class="btn btn-danger col-sm-4" name="delete" ng-click="pirate.deletePirate(sailor)">Delete this pirate</button>
+    </span>
+  </div>
+</div>
+<button type="button" class="btn btn-primary col-sm-3" name="newPirate" ng-click="pirate.showForm = !pirate.showForm">Add a pirate</button>
+
+<form name="newPirate" class="form-group" ng-show="pirate.showForm" ng-submit="pirate.addPirate(pirate.nPirate)">
+  <input type="text" class="form-control" name="name" ng-model="pirate.nPirate.name" placeholder="Pirate name">
+  <input type="text" class="form-control" name="poison" ng-model="pirate.nPirate.poison" placeholder="Pirate poison">
+  <input type="text" class="form-control" name="accessory" ng-model="pirate.nPirate.accessory" placeholder="Pirate accessory">
+  <input type="text" class="form-control" name="image" ng-model="pirate.nPirate.image" placeholder="Pirate image">
+  <p class="help-block">Describe this pirate for me...</p>
+  <button type="submit" class="btn btn-primary col-sm-3" name="addIt" >Add it!</button>
+</form>

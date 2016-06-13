@@ -1,3 +1,5 @@
+// this is where we access the db
+
 module.exports = {
   development: {
     client: 'pg',
