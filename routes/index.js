@@ -8,7 +8,7 @@ router.get('/', (req, res, next) => {
     res.json(pirates);
   });
 });
-
+  
 router.post('/', (req, res, next) => {
   return knex('pirates').insert(req.body).then(pirates => {
     res.json(pirates);

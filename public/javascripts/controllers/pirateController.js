@@ -11,7 +11,6 @@ angular
     var vm = this;
     vm.nameForm = false;
     vm.test = 'no';
-    console.log(vm.nameForm);
     PirateService.allPirates().then(pirates => {
       vm.allPirates = pirates;
     });
